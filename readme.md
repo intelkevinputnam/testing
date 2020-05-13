@@ -1,8 +1,8 @@
 # This is a test
 
 ``` ShellSession
-make clean
+$ make clean
 Removing everything under '_build'...
-make html
+$ make html
 Running Sphinx v1.6.7
 ```
