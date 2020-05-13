@@ -1,6 +1,6 @@
 # This is a test
 
-``` shell-session ShellSession
+``` ShellSession shell-session
 $ make clean
 Removing everything under '_build'...
 $ make html
