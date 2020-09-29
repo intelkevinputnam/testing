@@ -5,8 +5,8 @@
         <category>
             <data name="audience" value="emtaudience:business/btssbusinesstechnologysolutionspecialist/softwaredeveloper"/>
             <data name="content type" value=""/>
-            <data name="description" value=""/>
-            <data name="document title" value=""/>
+            <data name="description" value="Get started guide for TCC project"/>
+            <data name="document title" value="TCC Get Started Guide"/>
             <data name="download url" value="/content/www/us/en/develop/download/ipp-developer-guide.pdf"/>
             <data name="IDZ custom tags" value="idzcustomtags:productdocumentation"/>
             <data name="keywords" value="None"/>
@@ -23,62 +23,37 @@
             <data name="secondary contenttype" value=""/>
             <data name="security_classification" value="Public Content or Intel Confidential"/>
             <data name="shortDescription" value=""/>
-            <data name="shortTitle" value=""/>
+            <data name="shortTitle" value="TCC Get Started Guide"/>
         </category>
+        <prodinfo>
+            <prodname>TCC</prodname>
+            <vrmlist><vrm version="8.1"/></vrmlist>
+        </prodinfo>
     </topicmeta>
     <data-about>
         <data datatype="webAttr" name="intelswd_aliasprefix" value=""/>
     </data-about>
-    <topicref href="files/tcc_gsg_prerequisites.xml" toc="yes">
-        <topichead navtitle="Host System for Building Yocto Project*">
-        </topichead>
-        <topichead navtitle="Host System for Development with Intel® TCC Tools">
-        </topichead>
-        <topichead navtitle="Target System">
-        </topichead>
-        <topichead navtitle="Additional Prerequisites">
-        </topichead>
-    </topicref>
-    <topicref href="files/tcc_gsg_download.xml" toc="yes">
-    </topicref>
-    <topicref href="files/tcc_gsg_build_yocto_image_toolchain.xml" toc="yes">
-    </topicref>
-    <topicref href="files/tcc_gsg_install_toolchain.xml" toc="yes">
-        <topichead navtitle="Install Toolchain">
-        </topichead>
-        <topichead navtitle="Install Additional Host Dependencies">
-        </topichead>
-    </topicref>
-    <topicref href="files/tcc_gsg_create_bootable_usb.xml" toc="yes">
-    </topicref>
-    <topicref href="files/tcc_gsg_install_image.xml" toc="yes">
-        <topichead navtitle="Remove Boot Partition">
-        </topichead>
-    </topicref>
-    <topicref href="files/tcc_gsg_configure_bios.xml" toc="yes">
-    </topicref>
-    <topicref href="files/tcc_gsg_verify_target_system_setup.xml" toc="yes">
-        <topichead navtitle="For Elkhart Lake">
-        </topichead>
-        <topichead navtitle="For Tiger Lake UP3">
-        </topichead>
-    </topicref>
-    <topicref href="files/tcc_gsg_next_steps.xml" toc="yes">
-        <topichead navtitle="Feature Summary">
-            <topichead navtitle="Real-Time Configuration and Optimization">
-            </topichead>
-            <topichead navtitle="Measurement and Analysis">
-            </topichead>
-            <topichead navtitle="Time Synchronization and Communication">
-            </topichead>
-        </topichead>
-        <topichead navtitle="Related Documentation">
-        </topichead>
-    </topicref>
-    <topicref href="files/tcc_gsg_troubleshooting.xml" toc="yes">
-        <topichead navtitle="Restart the Build">
-        </topichead>
-    </topicref>
-    <topicref href="files/tcc_gsg_legal.xml" toc="yes">
-    </topicref>
-</map>
+    <topicref href="top.xml" toc="yes">
+        <topicref href="files/tcc_gsg_prerequisites.xml" toc="yes">
+        </topicref>
+        <topicref href="files/tcc_gsg_download.xml" toc="yes">
+        </topicref>
+        <topicref href="files/tcc_gsg_build_yocto_image_toolchain.xml" toc="yes">
+        </topicref>
+        <topicref href="files/tcc_gsg_install_toolchain.xml" toc="yes">
+        </topicref>
+        <topicref href="files/tcc_gsg_create_bootable_usb.xml" toc="yes">
+        </topicref>
+        <topicref href="files/tcc_gsg_install_image.xml" toc="yes">
+        </topicref>
+        <topicref href="files/tcc_gsg_configure_bios.xml" toc="yes">
+        </topicref>
+        <topicref href="files/tcc_gsg_verify_target_system_setup.xml" toc="yes">
+        </topicref>
+        <topicref href="files/tcc_gsg_next_steps.xml" toc="yes">
+        </topicref>
+        <topicref href="files/tcc_gsg_troubleshooting.xml" toc="yes">
+        </topicref>
+        <topicref href="files/tcc_gsg_legal.xml" toc="yes">
+        </topicref>
+    </topicref></map>
