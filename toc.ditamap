@@ -13,7 +13,7 @@
             <data name="language" value="en"/>
             <data name="location" value="us"/>
             <data name="menu" value=""/>
-            <data name="operating system" value="emtoperatingsystem: microsoftwindows"/>
+            <data name="operating system" value="emtoperatingsystem:microsoftwindows"/>
             <data name="programming language" value="emtprogramminglanguage:fortran"/>
             <data name="software" value="rsoftware:componentsproducts/intelfortrancompiler"/>
             <data name="primaryOwner" value="Putnam, Kevin (kevin,putnam@intel.com)"/>
