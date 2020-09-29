@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2020" />
+<meta name="DC.rights.owner" content="(C) Copyright 2020" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Step 7: Complete and Verify the Target System Setup" />
+<meta name="DC.coverage" content="" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="step-7-complete-and-verify-the-target-system-setup" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="../commonltr.css" />
+<title>Step 7: Complete and Verify the Target System Setup</title>
+</head>
+<body class="no-rel-links" id="step-7-complete-and-verify-the-target-system-setup">
+
+    <h1 class="title topictitle1" id="ariaid-title1">Step 7: Complete and Verify the Target System Setup</h1>
+
+    <div class="body">
+        <div class="div" id="step-7-complete-and-verify-the-target-system-setup__verify-target-system-setup"></div>
+        <div class="div" id="step-7-complete-and-verify-the-target-system-setup__step-7-complete-and-verify-the-target-system-setup">
+            <p class="p">The remaining steps depend on the target platform that you plan to use with this release of Intel® Time Coordinated Computing Tools (Intel® TCC Tools).</p>
+
+            <p class="p">Go to the steps that apply to your platform:</p>
+
+            <ul class="ul">
+                <li class="li">
+                    <p class="p"><a class="xref" href="#verify-target-system-setup-ehl">For Elkhart Lake</a></p>
+
+                </li>
+
+                <li class="li">
+                    <p class="p"><a class="xref" href="#verify-target-system-setup-tgl">For Tiger Lake UP3</a></p>
+
+                </li>
+
+            </ul>
+
+            <div class="div" id="step-7-complete-and-verify-the-target-system-setup__verify-target-system-setup-ehl"></div>
+            <div class="div" id="step-7-complete-and-verify-the-target-system-setup__for-elkhart-lake">
+                <p class="p"><strong class="ph b">For Elkhart Lake</strong></p>
+
+                <p class="p">Now that you have set up the target system, you will run a tool called the <em class="ph i">real-time readiness checker</em> as a final verification step.</p>
+
+                <p class="p">The real-time readiness checker is a command-line tool that checks the many attributes that may affect real-time performance, such as the BIOS settings configured in the previous step. It also checks for the dependencies of Intel® TCC Tools.</p>
+
+                <p class="p">To complete and verify setup:</p>
+
+                <ol class="ol">
+                    <li class="li">
+                        <p class="p">Wait for the target system to boot.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Connect the host system to the target system via SSH:</p>
+
+                        <ol class="ol" type="a">
+                            <li class="li">
+                                <p class="p">Use a CAT-5E Ethernet cable to connect the target system to the same
+                                network as the host.</p>
+
+                            </li>
+
+                            <li class="li">
+                                <p class="p">On the host system, connect to the target via SSH. Replace <code class="ph codeph">&lt;user&gt;</code>
+                                with the username (typically it is <code class="ph codeph">root</code> for customer reference
+                                boards). Replace <code class="ph codeph">&lt;target&gt;</code> with the IP address or hostname.</p>
+
+                                <pre class="pre codeblock"><code>
+ssh &lt;user&gt;@&lt;target&gt;                                </code></pre>
+                            </li>
+
+                        </ol>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p"><strong class="ph b">On the target system</strong>, run the following command to mount the
+                        Linux Resource Control (resctrl) file system. The resctrl file system is required for the cache allocation capabilities of Intel® TCC Tools. The real-time readiness checker will check for it.</p>
+
+                        <pre class="pre codeblock"><code>
+mount -t resctrl resctrl /sys/fs/resctrl                        </code></pre>
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Maximize the terminal window to full size. The real-time readiness
+                        checker displays tables of settings that are best viewed in a wide window.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Run the real-time readiness checker:</p>
+
+                        <pre class="pre codeblock"><code>
+tcc_rt_checker                        </code></pre>
+                    </li>
+
+                    <li class="li">
+                        <p class="p">In the output, check the Result column for each checker:</p>
+
+                        <ul class="ul">
+                            <li class="li">
+                                <p class="p">If “RT_READY” appears for all checkers, continue to
+                                <a class="xref" href="tcc_gsg_next_steps.html#gsg-next-steps">Next Steps</a>. See note below.</p>
+
+                            </li>
+
+                            <li class="li">
+                                <p class="p">If “NOT_RT_READY” appears for any checkers, use the command <code class="ph codeph">tcc_rt_checker -l</code> for details.</p>
+
+                            </li>
+
+                            <li class="li">
+                                <p class="p">For more information about this tool, see the <a class="xref" href="https://software.intel.com/content/www/us/en/secure/develop/documentation/intel-time-coordinated-computing-tools-developer-guide-0-11/top/measurement-and-analysis/real-time-readiness-checker.html" target="_blank">Real-Time Readiness Checker
+                                Tool</a>.</p>
+
+                            </li>
+
+                        </ul>
+
+                        <div class="note note"><span class="notetitle">Note:</span> 
+                            <p class="p">In some cases, the real-time readiness checker may
+                            return NOT_RT_READY summary status even if all the checks have RT_READY status.</p>
+
+                        </div>
+
+                    </li>
+
+                </ol>
+
+                <div class="div" id="step-7-complete-and-verify-the-target-system-setup__verify-target-system-setup-tgl"></div>
+            </div>
+            <div class="div" id="step-7-complete-and-verify-the-target-system-setup__for-tiger-lake-up3">
+                <p class="p"><strong class="ph b">For Tiger Lake UP3</strong></p>
+
+                <p class="p">To complete the target system setup, you will enable the cache allocation capabilities of Intel® TCC Tools. To do this, you will use a command-line tool called <em class="ph i">cache configurator</em> to reserve a portion of the L2 and L3 cache. A reserved portion of cache is called <em class="ph i">software SRAM</em>.</p>
+
+                <p class="p">This step enables the cache allocation library to provide low-latency memory buffers to your real-time workloads. At the same time, part of the cache will be removed from general use, potentially reducing the performance of non-real-time applications.</p>
+
+                <p class="p">This step reserves the recommended amount of cache (256 KB) for running the cache allocation sample,
+                but you can choose a different amount based on your real-time workload memory requirements.</p>
+
+                <p class="p">After completing setup of the target system, you will run a tool called the <em class="ph i">real-time readiness checker</em> as a final verification step.</p>
+
+                <p class="p">The real-time readiness checker is a command-line tool that checks the many attributes that may affect real-time performance, such as the BIOS settings configured in the previous step. It also checks for the dependencies of Intel® TCC Tools.</p>
+
+                <p class="p">To complete and verify setup:</p>
+
+                <ol class="ol">
+                    <li class="li">
+                        <p class="p">Wait for the target system to boot.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">The following steps will switch back and forth between host system and
+                        target system. Pay close attention.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p"><strong class="ph b">On the host system</strong>, open two terminal windows, one for host and
+                        one for target. <strong class="ph b">Note:</strong> The following steps assume two terminals to keep track of host steps vs. target steps, but it is not mandatory, you can choose to manage this through one window.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">In the first terminal window, connect the host system to the
+                        target system via SSH:</p>
+
+                        <p class="p">The cache configurator runs on the host system and uses an SSH connection to configure the target system, so SSH connection should be set up before.</p>
+
+                        <ol class="ol" type="a">
+                            <li class="li">
+                                <p class="p">Use a CAT-5E Ethernet cable to connect the target system to the same
+                                network as the host.</p>
+
+                            </li>
+
+                            <li class="li">
+                                <p class="p"><strong class="ph b">On the host system</strong>, connect to the target via SSH. Replace <code class="ph codeph">&lt;user&gt;</code>
+                                with the username (typically it is <code class="ph codeph">root</code> for customer reference
+                                boards). Replace <code class="ph codeph">&lt;target&gt;</code> with the IP address or hostname.</p>
+
+                                <pre class="pre codeblock"><code>
+ssh &lt;user&gt;@&lt;target&gt;                                </code></pre>
+                            </li>
+
+                        </ol>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Prepare the target system:</p>
+
+                        <ol class="ol" type="a">
+                            <li class="li">
+                                <p class="p">Confirm that you are working on the target system.</p>
+
+                            </li>
+
+                            <li class="li">
+                                <p class="p"><strong class="ph b">On the target system</strong>, add the <code class="ph codeph">tcc_buffer</code> driver to auto load:</p>
+
+                                <pre class="pre codeblock"><code>
+depmod -a
+                                    echo "tcc_buffer" &gt; /etc/modules-load.d/tcc_buffer.conf                                </code></pre>
+                            </li>
+
+                            <li class="li">
+                                <p class="p"><strong class="ph b">On the target system</strong>, load the <code class="ph codeph">tcc_buffer</code> driver:</p>
+
+                                <pre class="pre codeblock"><code>
+modprobe tcc_buffer                                </code></pre>
+                            </li>
+
+                        </ol>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Prepare the host system:</p>
+
+                        <ol class="ol" type="a">
+                            <li class="li">
+                                <p class="p">Go to the second terminal window to set up the cache configurator.</p>
+
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Confirm that you are working on the host system.</p>
+
+                            </li>
+
+                            <li class="li">
+                                <p class="p"><strong class="ph b">On the host system</strong>, go to the Intel® TCC Tools <code class="ph codeph">&lt;install_directory&gt;/tcc_tools/latest/tools</code> directory:</p>
+
+                                <pre class="pre codeblock"><code>
+cd &lt;install_directory&gt;/tcc_tools/latest/tools                                </code></pre>
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Modify the sample environment file to enable the host to SSH
+                                to the target when running the cache configurator. This example command uses nano, but you can use any text editor.</p>
+
+                                <pre class="pre codeblock"><code>
+nano demo/environment/sample_environment.json                                </code></pre>
+                                <p class="p">Modify the following fields:</p>
+
+                                
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" class="table" frame="border" border="1" rules="all"><colgroup><col style="width:50" /><col style="width:50" /></colgroup><thead class="thead" style="text-align:left;">
+                                            <tr class="row">
+                                                <th class="entry nocellnorowborder" style="vertical-align:top;" id="d2790e428">
+                                                    <p class="p">Field Name</p>
+
+                                                </th>
+
+                                                <th class="entry cell-norowborder" style="vertical-align:top;" id="d2790e434">
+                                                    <p class="p">Description</p>
+
+                                                </th>
+
+                                            </tr>
+
+                                        </thead>
+<tbody class="tbody">
+                                            <tr class="row">
+                                                <td class="entry nocellnorowborder" style="vertical-align:top;" headers="d2790e428 ">
+                                                    <p class="p">“hostname”</p>
+
+                                                </td>
+
+                                                <td class="entry cell-norowborder" style="vertical-align:top;" headers="d2790e434 ">
+                                                    <p class="p">Replace <code class="ph codeph">...</code> with the IP address or host name of the target
+                                                    system.</p>
+
+                                                </td>
+
+                                            </tr>
+
+                                            <tr class="row">
+                                                <td class="entry nocellnorowborder" style="vertical-align:top;" headers="d2790e428 ">
+                                                    <p class="p">“username”</p>
+
+                                                </td>
+
+                                                <td class="entry cell-norowborder" style="vertical-align:top;" headers="d2790e434 ">
+                                                    <p class="p">Replace <code class="ph codeph">...</code> with <strong class="ph b">root</strong> for customer reference boards.</p>
+
+                                                    <p class="p">The field should look like this:</p>
+
+                                                    <p class="p"><code class="ph codeph">"username": "root"</code></p>
+
+                                                    <p class="p">This field contains the username to connect to the target system by SSH.</p>
+
+                                                </td>
+
+                                            </tr>
+
+                                            <tr class="row">
+                                                <td class="entry nocellnorowborder" style="vertical-align:top;" headers="d2790e428 ">
+                                                    <p class="p">“password”</p>
+
+                                                </td>
+
+                                                <td class="entry cell-norowborder" style="vertical-align:top;" headers="d2790e434 ">
+                                                    <p class="p">Replace <code class="ph codeph">...</code> with the password to connect to the
+                                                    target system by SSH.</p>
+
+                                                    <p class="p">If the SSH connection is expected to be passwordless, leave the password field empty as shown below:</p>
+
+                                                    <p class="p"><code class="ph codeph">"password": ""</code></p>
+
+                                                </td>
+
+                                            </tr>
+
+                                            <tr class="row">
+                                                <td class="entry row-nocellborder" style="vertical-align:top;" headers="d2790e428 ">
+                                                    <p class="p">All other fields</p>
+
+                                                </td>
+
+                                                <td class="entry cellrowborder" style="vertical-align:top;" headers="d2790e434 ">
+                                                    <p class="p">Leave all other fields as is. These fields enable you to further
+                                                    customize the behavior of the tool, but customization is beyond the scope of this guide.</p>
+
+                                                </td>
+
+                                            </tr>
+
+                                        </tbody>
+</table>
+</div>
+
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Save and close the environment file.</p>
+
+                            </li>
+
+                        </ol>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p"><strong class="ph b">On the host system</strong>, use the cache configurator to reserve a portion
+                        of cache (also called software SRAM):</p>
+
+                        <ol class="ol" type="a">
+                            <li class="li">
+                                <p class="p">Run the cache configurator:</p>
+
+                                <pre class="pre codeblock"><code>
+./tcc_cache_configurator.py -e demo/environment/sample_environment.json                                </code></pre>
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Confirm you see output similar to the following:</p>
+
+                                <pre class="pre codeblock"><code>
+Checking the platform’s current real-time configuration for maximum tolerable
+                                    buffer access latency, buffer size, etc. For more information about on these
+                                    parameters see the Intel® TCC Tools Developer Guide
+                                    
+                                    At any time, you can press (Ctrl + C) to exit the application.
+                                    ********************************************************************************
+                                    Here is an initial configuration you currently have on the system
+                                    
+                                    CURRENT BUFFERS ALLOCATED: 0
+                                    Would you like to add (A) a cache allocation?
+                                    
+                                    Or would you like to change the way the configuration is partitioned? (P)                                </code></pre>
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Enter <strong class="ph b">P</strong> to select a preset.</p>
+
+                            </li>
+
+                            <li class="li">
+                                <p class="p">At the prompt, enter <strong class="ph b">4</strong> to choose a preset with software
+                                SRAM in L3 cache and L2 cache for Core 3.</p>
+
+                                <pre class="pre codeblock"><code>
+********************************************************************************
+                                    Based on your current system settings, we recommend the following preset
+                                    configurations which you can use as is or use as a template to edit from:
+                                    
+                                    1. Default partitioning applied with Intel® TCC Mode = ON.
+                                       Dedicated cache for 1 real-time workload, no software SRAM, shared cache for
+                                       best-effort workloads on CPU + GPU, dedicated cache for I/O
+                                    
+                                    
+                                    2. Dedicated cache for 1 real-time workload, 1 x L3 software SRAM, shared cache
+                                       for best-effort workloads on CPU + GPU, dedicated cache for I/O
+                                    
+                                    
+                                    3. Dedicated cache for 2 real-time workloads, 1 x L3 software SRAM, shared cache
+                                       for best-effort workloads on CPU + GPU, dedicated cache for I/O
+                                    
+                                    
+                                    4. Dedicated cache for 2 real-time workloads, 1 x L3 software SRAM, 2 x L2
+                                       software SRAMs (Core 2 and Core 3), shared cache for best-effort workloads on
+                                       CPU + GPU, dedicated cache for I/O
+                                    
+                                    
+                                    5. Dedicated cache for 2 real-time workloads, 1 x L3 software SRAM, 2 x L2
+                                       software SRAMs (Core 2 and Core 3), shared cache for best-effort workloads on
+                                       CPU, dedicated but minimal cache for GPU, dedicated cache for I/O
+                                    
+                                    
+                                    6. [Preview Feature] Edit the Current Configuration / do not use a preset template
+                                    
+                                    Which option would you like to select?
+                                    
+                                    4                                </code></pre>
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Confirm you see output similar to the following and press
+                                <strong class="ph b">Y</strong> to apply this configuration:</p>
+
+                                <pre class="pre codeblock"><code>
+NEW BUFFER 0
+                                    LATENCY(ns):        74
+                                    CACHE LEVEL:        2
+                                    CPU CORE:           2
+                                    BUFFER SIZE(bytes): 262144
+                                    
+                                    NEW BUFFER 1
+                                    LATENCY(ns):        74
+                                    CACHE LEVEL:        2
+                                    CPU CORE:           3
+                                    BUFFER SIZE(bytes): 262144
+                                    
+                                    NEW BUFFER 2
+                                    LATENCY(ns):        159
+                                    CACHE LEVEL:        3
+                                    CPU CORES:          [0, 1, 2, 3]
+                                    BUFFER SIZE(bytes): 524288
+                                    
+                                    Would you like to add (A) or delete (D) a cache allocation?
+                                    
+                                    Or would you like to change the way the configuration is partitioned? (P)
+                                    
+                                    Or confirm (Y) to proceed to apply this configuration, a reboot will be required
+                                    to complete the configuration.
+                                    
+                                    Y                                </code></pre>
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Enter <strong class="ph b">Y</strong> again to proceed to apply this configuration. To apply the
+                                configuration, the system will reboot.</p>
+
+                                <pre class="pre codeblock"><code>
+Requested configuration:
+                                    
+                                    NEW BUFFER 0
+                                    LATENCY(ns):        74
+                                    CACHE LEVEL:        2
+                                    CPU CORE:           2
+                                    BUFFER SIZE(bytes): 262144
+                                    
+                                    NEW BUFFER 1
+                                    LATENCY(ns):        74
+                                    CACHE LEVEL:        2
+                                    CPU CORE:           3
+                                    BUFFER SIZE(bytes): 262144
+                                    
+                                    NEW BUFFER 2
+                                    LATENCY(ns):        159
+                                    CACHE LEVEL:        3
+                                    CPU CORES:          [0, 1, 2, 3]
+                                    BUFFER SIZE(bytes): 524288
+                                    
+                                    Confirm (Y) to proceed to apply this configuration, a reboot
+                                    will be required to complete the configuration.
+                                    Or continue (C) configuring your total requested configuration
+                                    
+                                    Y                                </code></pre>
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Wait for the target system to boot and verify that the
+                                system is configured:</p>
+
+                                <pre class="pre codeblock"><code>
+Waiting for reboot...
+                                    
+                                    ********************************************************************************
+                                    Remote Machine is successfully rebooted.
+                                    
+                                    SUCCESS: Current configuration:
+                                    
+                                    CURRENT BUFFERS ALLOCATED: 2
+                                    NEW BUFFER 0
+                                    LATENCY(ns):        74
+                                    CACHE LEVEL:        2
+                                    CPU CORE:           2
+                                    BUFFER SIZE(bytes): 262144
+                                    
+                                    NEW BUFFER 1
+                                    LATENCY(ns):        74
+                                    CACHE LEVEL:        2
+                                    CPU CORE:           3
+                                    BUFFER SIZE(bytes): 262144
+                                    
+                                    NEW BUFFER 2
+                                    LATENCY(ns):        159
+                                    CACHE LEVEL:        3
+                                    CPU CORES:          [0, 1, 2, 3]
+                                    BUFFER SIZE(bytes): 524288                                </code></pre>
+                            </li>
+
+                        </ol>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p"><strong class="ph b">Go back to the first terminal window</strong> and reconnect to the target via SSH.
+                        Replace <code class="ph codeph">&lt;user&gt;</code> with the username (typically it is <code class="ph codeph">root</code> for customer reference boards). Replace <code class="ph codeph">&lt;target&gt;</code> with the IP address or hostname.</p>
+
+                        <pre class="pre codeblock"><code>
+ssh &lt;user&gt;@&lt;target&gt;                        </code></pre>
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Confirm that you are working on the target system.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Enable cache allocation capabilities on the target system. These steps
+                        configure a component called real-time configuration manager (RTCM).</p>
+
+                        <ol class="ol" type="a">
+                            <li class="li">
+                                <p class="p"><strong class="ph b">On the target system</strong>, copy the RTCM EFI binaries
+                                into <code class="ph codeph">/boot/efi/EFI/BOOT/</code>:</p>
+
+                                <pre class="pre codeblock"><code>
+cp /usr/share/ptcm/ptcm_*.efi /boot/efi/EFI/BOOT                                </code></pre>
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Determine which disk you boot from with following command:</p>
+
+                                <pre class="pre codeblock"><code>
+lsblk                                </code></pre>
+                                <p class="p">Example output:</p>
+
+                                <pre class="pre codeblock"><code>
+NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+                                    sda      8:0    1 57.3G  0 disk
+                                    |-sda1   8:1    1  128M  0 part /boot/efi
+                                    |-sda2   8:2    1   12G  0 part /
+                                    |-sda3   8:3    1   12G  0 part
+                                    |-sda4   8:4    1   12G  0 part /data
+                                    |-sda5   8:5    1    4G  0 part [SWAP]
+                                    sdb      8:16   1 14.4G  0 disk
+                                    |-sdb1   8:17   1 14.4G  0 part
+                                    sdc      8:32   1 28.7G  0 disk                                </code></pre>
+                                <p class="p">In this example, the boot disk (/boot/efi) is <code class="ph codeph">sda</code> and partition is <code class="ph codeph">1</code>. In some cases, you may see the partition <code class="ph codeph">p1</code>; the partition is still <code class="ph codeph">1</code>.</p>
+
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Set RTCM as the default boot option. <strong class="ph b">Replace &lt;disk&gt; and &lt;partition&gt; with the disk you boot from.</strong></p>
+
+                                <pre class="pre codeblock"><code>
+efibootmgr -c -l '\EFI\BOOT\ptcm_boot.efi' -d /dev/&lt;disk&gt; -p &lt;partition&gt; -L RTCM                                </code></pre>
+                                <p class="p">In this example output, the appearance of RTCM means the command was successful. RTCM will be enabled (as indicated by the asterisk) and first in the boot order (as indicated in BootOrder) after you reboot.</p>
+
+                                <pre class="pre codeblock"><code>
+BootCurrent: 0003
+                                    Timeout: 5 seconds
+                                    BootOrder: 0004,0003,0001,0002,0000
+                                    Boot0000* Enter Setup
+                                    Boot0001* Internal UEFI Shell
+                                    Boot0002* Boot Device List
+                                    Boot0003* UEFI INTEL SSDPEKKW010T8 BTHH85010JZH1P0E 1
+                                    Boot0004* RTCM                                </code></pre>
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Reboot the target system.</p>
+
+                                <pre class="pre codeblock"><code>
+reboot                                </code></pre>
+                            </li>
+
+                        </ol>
+
+                        <p class="p">Now the system is configured and software SRAM buffers can be allocated with
+                        the cache allocation library.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p"><strong class="ph b">Go back to the first terminal window</strong> and reconnect to the target via SSH.
+                        Replace <code class="ph codeph">&lt;user&gt;</code> with the username (typically it is <code class="ph codeph">root</code> for customer reference boards). Replace <code class="ph codeph">&lt;target&gt;</code> with the IP address or hostname.</p>
+
+                        <pre class="pre codeblock"><code>
+ssh &lt;user&gt;@&lt;target&gt;                        </code></pre>
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Validate system settings:</p>
+
+                        <ol class="ol" type="a">
+                            <li class="li">
+                                <p class="p"><strong class="ph b">On the target system</strong>, run the real-time readiness checker:</p>
+
+                                <pre class="pre codeblock"><code>
+tcc_rt_checker                                </code></pre>
+                            </li>
+
+                            <li class="li">
+                                <p class="p">In the output, check the Result column for each checker:</p>
+
+                                <ul class="ul">
+                                    <li class="li">
+                                        <p class="p">If “RT_READY” appears for all checkers, continue to
+                                        <a class="xref" href="tcc_gsg_next_steps.html#gsg-next-steps">Next Steps</a>. See note below.</p>
+
+                                    </li>
+
+                                    <li class="li">
+                                        <p class="p">If “NOT_RT_READY” appears for any checkers, use the command
+                                        <code class="ph codeph">tcc_rt_checker -l</code> for details.</p>
+
+                                    </li>
+
+                                    <li class="li">
+                                        <p class="p">For more information about this tool, see the <a class="xref" href="https://software.intel.com/content/www/us/en/secure/develop/documentation/intel-time-coordinated-computing-tools-developer-guide-0-11/top/measurement-and-analysis/real-time-readiness-checker.html" target="_blank">Real-Time Readiness Checker
+                                        Tool</a>.</p>
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="note note"><span class="notetitle">Note:</span> 
+                                    <p class="p">It is possible for <code class="ph codeph">Resctrl OS API</code> and <code class="ph codeph">Resctrl pseudo-lock API</code> to be
+                                    <code class="ph codeph">NOT_RT_READY</code>, because <code class="ph codeph">tcc_buffer</code> driver is used on Tiger Lake UP3 instead of
+                                    <code class="ph codeph">resctrl</code>.</p>
+
+                                </div>
+
+                            </li>
+
+                        </ol>
+
+                    </li>
+
+                </ol>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

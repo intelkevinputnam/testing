@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE map PUBLIC "-//OASIS//DTD DITA Map//EN" "map.dtd">
+<map>
+    <topicmeta>
+        <category>
+            <data name="audience" value="emtaudience:business/btssbusinesstechnologysolutionspecialist/softwaredeveloper"/>
+            <data name="content type" value=""/>
+            <data name="description" value=""/>
+            <data name="document title" value=""/>
+            <data name="download url" value="/content/www/us/en/develop/download/ipp-developer-guide.pdf"/>
+            <data name="IDZ custom tags" value="idzcustomtags:productdocumentation"/>
+            <data name="keywords" value="None"/>
+            <data name="language" value="en"/>
+            <data name="location" value="us"/>
+            <data name="menu" value=""/>
+            <data name="operating system" value="emtoperatingsystem: microsoftwindows"/>
+            <data name="programming language" value="emtprogramminglanguage:fortran"/>
+            <data name="software" value="rsoftware:componentsproducts/intelfortrancompiler"/>
+            <data name="primaryOwner" value="Putnam, Kevin (kevin,putnam@intel.com)"/>
+            <data name="programidentifier" value="idz"/>
+            <data name="published_date" value="09/09/2020"/>
+            <data name="resourcetypeTag" value="emtcontenttype:document"/>
+            <data name="secondary contenttype" value=""/>
+            <data name="security_classification" value="Public Content or Intel Confidential"/>
+            <data name="shortDescription" value=""/>
+            <data name="shortTitle" value=""/>
+        </category>
+    </topicmeta>
+    <data-about>
+        <data datatype="webAttr" name="intelswd_aliasprefix" value=""/>
+    </data-about>
+    <topicref href="files/tcc_gsg_prerequisites.xml" toc="yes">
+        <topichead navtitle="Host System for Building Yocto Project*">
+        </topichead>
+        <topichead navtitle="Host System for Development with Intel® TCC Tools">
+        </topichead>
+        <topichead navtitle="Target System">
+        </topichead>
+        <topichead navtitle="Additional Prerequisites">
+        </topichead>
+    </topicref>
+    <topicref href="files/tcc_gsg_download.xml" toc="yes">
+    </topicref>
+    <topicref href="files/tcc_gsg_build_yocto_image_toolchain.xml" toc="yes">
+    </topicref>
+    <topicref href="files/tcc_gsg_install_toolchain.xml" toc="yes">
+        <topichead navtitle="Install Toolchain">
+        </topichead>
+        <topichead navtitle="Install Additional Host Dependencies">
+        </topichead>
+    </topicref>
+    <topicref href="files/tcc_gsg_create_bootable_usb.xml" toc="yes">
+    </topicref>
+    <topicref href="files/tcc_gsg_install_image.xml" toc="yes">
+        <topichead navtitle="Remove Boot Partition">
+        </topichead>
+    </topicref>
+    <topicref href="files/tcc_gsg_configure_bios.xml" toc="yes">
+    </topicref>
+    <topicref href="files/tcc_gsg_verify_target_system_setup.xml" toc="yes">
+        <topichead navtitle="For Elkhart Lake">
+        </topichead>
+        <topichead navtitle="For Tiger Lake UP3">
+        </topichead>
+    </topicref>
+    <topicref href="files/tcc_gsg_next_steps.xml" toc="yes">
+        <topichead navtitle="Feature Summary">
+            <topichead navtitle="Real-Time Configuration and Optimization">
+            </topichead>
+            <topichead navtitle="Measurement and Analysis">
+            </topichead>
+            <topichead navtitle="Time Synchronization and Communication">
+            </topichead>
+        </topichead>
+        <topichead navtitle="Related Documentation">
+        </topichead>
+    </topicref>
+    <topicref href="files/tcc_gsg_troubleshooting.xml" toc="yes">
+        <topichead navtitle="Restart the Build">
+        </topichead>
+    </topicref>
+    <topicref href="files/tcc_gsg_legal.xml" toc="yes">
+    </topicref>
+</map>

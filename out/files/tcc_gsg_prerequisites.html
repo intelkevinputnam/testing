@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2020" />
+<meta name="DC.rights.owner" content="(C) Copyright 2020" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Prerequisites" />
+<meta name="DC.coverage" content="" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="prerequisites" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="../commonltr.css" />
+<title>Prerequisites</title>
+</head>
+<body class="no-rel-links" id="prerequisites">
+
+    <h1 class="title topictitle1" id="ariaid-title1">Prerequisites</h1>
+
+    <div class="body">
+        <div class="div" id="prerequisites__gsg-prerequisites"></div>
+        <div class="div" id="prerequisites__prerequisites">
+            <p class="p">For this guide, you will need a host system and a target system that meet the following specifications.</p>
+
+            <div class="div" id="prerequisites__gsg-prerequisites-host-yocto"></div>
+            <div class="div" id="prerequisites__host-system-for-building-yocto-project">
+                <p class="p"><strong class="ph b">Host System for Building Yocto Project*</strong></p>
+
+                <p class="p">The recommended way of setting up the target OS is by creating a Yocto Project-based image using the platform board support package (BSP) and Intel® TCC Tools layer integrated into it. In addition, you may choose to add the Intel® VTune™ Profiler layer to your image to experience the full capabilities of Intel® VTune™ Profiler when profiling applications on your target system.</p>
+
+                <p class="p">This guide shows how to <a class="xref" href="tcc_gsg_build_yocto_image_toolchain.html#build-yocto-image-toolchain">build the image</a> for the target system. Building an image is time-consuming and requires substantial compute resources. You should ensure your host system is capable of doing it. The host system used for building the image can be different from the <a class="xref" href="#gsg-prerequisites-host-dev">host system for development with Intel® TCC Tools</a>. Consider using a dedicated server system to build the image and then share the image among developers.</p>
+
+                <p class="p">To build an image, you will need a host system that meets the following specifications:</p>
+
+                <ul class="ul">
+                    <li class="li">
+                        <p class="p">A <a class="xref" href="https://www.yoctoproject.org/docs/current/ref-manual/ref-manual.html#detailed-supported-distros" target="_blank">Linux* distribution</a> that supports Yocto Project.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Internet access.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">A minimum of 500 GB of free disk space.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Recommended: Processor with a minimum of 8 cores.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Recommended: A minimum of 16 GB of RAM.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">A USB drive to use as a bootable drive. You will use the drive to install
+                        the image on the target system.</p>
+
+                        <p class="p"><strong class="ph b">Note:</strong> When you create the bootable drive, the existing contents of the drive will be overwritten.</p>
+
+                        <ul class="ul">
+                            <li class="li">
+                                <p class="p">A minimum of 64 GB.</p>
+
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+                <div class="div" id="prerequisites__gsg-prerequisites-host-dev"></div>
+            </div>
+            <div class="div" id="prerequisites__host-system-for-development-with-intel-tcc-tools">
+                <p class="p"><strong class="ph b">Host System for Development with Intel® TCC Tools</strong></p>
+
+                <p class="p">To develop with Intel® TCC Tools, you will need a host system that meets the following specifications:</p>
+
+                <ul class="ul">
+                    <li class="li">
+                        <p class="p">Recommended: Ubuntu* 20.04 LTS</p>
+
+                        <div class="note note"><span class="notetitle">Note:</span> 
+                            <p class="p">Instructions for Intel® TCC Tools contain steps and dependencies based on Ubuntu* 20.04 LTS as the host system. The host components of Intel® TCC Tools are expected to work on all common Linux distributions, but specific steps for setting up additional dependencies might be different.</p>
+
+                        </div>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Python* 3.7 or higher required for several components</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Internet access</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">OpenSSL*</p>
+
+                    </li>
+
+                </ul>
+
+                <div class="div" id="prerequisites__gsg-prerequisites-target"></div>
+            </div>
+            <div class="div" id="prerequisites__target-system">
+                <p class="p"><strong class="ph b">Target System</strong></p>
+
+                <p class="p">For the purposes of this get started guide, you will need one of the following boards with the specified processor installed. The processor is denoted by stock keeping unit (SKU).</p>
+
+                <div class="note note"><span class="notetitle">Note:</span> 
+                    <p class="p">In this release, the data streams optimizer works on Elkhart Lake only.
+                    The cache configurator works on Tiger Lake UP3 only.</p>
+
+                </div>
+
+                <ul class="ul">
+                    <li class="li">
+                        <p class="p">Tiger Lake UP3 DDR4 customer reference board, processor SKU: QUYZ or newer</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Elkhart Lake customer reference board, processor SKU: QTHY or newer</p>
+
+                    </li>
+
+                </ul>
+
+                <p class="p">Additional hardware for each board:</p>
+
+                <ul class="ul">
+                    <li class="li">
+                        <p class="p">Monitor</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Keyboard</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Mouse</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">(Optional) Ethernet cable to connect the target system to the local
+                        network for remote access</p>
+
+                    </li>
+
+                </ul>
+
+                <p class="p">The following BIOS versions have been validated to work with this release of Intel® TCC Tools:</p>
+
+                <div class="note note"><span class="notetitle">Note:</span> 
+                    <p class="p">Other BIOS versions might work too.</p>
+
+                </div>
+
+                <ul class="ul">
+                    <li class="li">
+                        <p class="p">For Tiger Lake UP3 customer reference boards:</p>
+
+                        <ul class="ul">
+                            <li class="li">
+                                <p class="p">TGLIFUI1.R00.3243.A04.2006302148</p>
+
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">For Elkhart Lake customer reference boards:</p>
+
+                        <ul class="ul">
+                            <li class="li">
+                                <p class="p">EHLSFWI1.R00.2233.A07.2006180207</p>
+
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+                <div class="note note"><span class="notetitle">Note:</span> 
+                    <p class="p">To acquire boards or BIOS binaries, contact your Intel representative.</p>
+
+                </div>
+
+                <div class="div" id="prerequisites__additional-prerequisites"></div>
+            </div>
+            <div class="div" id="prerequisites__additional-prerequisites">
+                <p class="p"><strong class="ph b">Additional Prerequisites</strong></p>
+
+                <p class="p">Some samples demonstrate communication between two target systems. If you choose to run these samples, you will need additional equipment:</p>
+
+                <ul class="ul">
+                    <li class="li">
+                        <p class="p">To run the RTCP (Real-Time Compute Performance) sample, you will need two
+                        Elkhart Lake target systems. Also, you will need to install an Intel® Ethernet Controller I210 on each target system (not
+                        included).</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">To run the real-time communication demo, you will need two target systems
+                        as defined above.</p>
+
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

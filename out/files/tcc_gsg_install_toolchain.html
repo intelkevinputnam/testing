@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<meta name="copyright" content="(C) Copyright 2020" />
+<meta name="DC.rights.owner" content="(C) Copyright 2020" />
+<meta name="DC.type" content="topic" />
+<meta name="DC.title" content="Step 3: Prepare Host Machine for Development" />
+<meta name="DC.coverage" content="" />
+<meta name="DC.format" content="XHTML" />
+<meta name="DC.identifier" content="step-3-prepare-host-machine-for-development" />
+<meta name="DC.language" content="en-US" />
+<link rel="stylesheet" type="text/css" href="../commonltr.css" />
+<title>Step 3: Prepare Host Machine for Development</title>
+</head>
+<body class="no-rel-links" id="step-3-prepare-host-machine-for-development">
+
+    <h1 class="title topictitle1" id="ariaid-title1">Step 3: Prepare Host Machine for Development</h1>
+
+    <div class="body">
+        <div class="div" id="step-3-prepare-host-machine-for-development__install-toolchain"></div>
+        <div class="div" id="step-3-prepare-host-machine-for-development__step-3-prepare-host-machine-for-development">
+            <p class="p">In this step, you will prepare your host system for development with Intel® Time Coordinated Computing Tools (Intel® TCC Tools). This involves installing the toolchain that you built in <a class="xref" href="tcc_gsg_build_yocto_image_toolchain.html#build-yocto-image-toolchain">Step 2: Prepare a Yocto Project*-Based Image</a>.</p>
+
+            <p class="p">An alternative to using the toolchain is to set up your host environment manually, by installing build dependencies. For instructions, see <a class="xref" href="https://software.intel.com/content/www/us/en/secure/develop/documentation/intel-time-coordinated-computing-tools-developer-guide-0-11/top/prerequisites-and-installation.html" target="_blank">Developer Guide</a>.</p>
+
+            <div class="div" id="step-3-prepare-host-machine-for-development__id1">
+                <p class="p"><strong class="ph b">Install Toolchain</strong></p>
+
+                <ol class="ol">
+                    <li class="li">
+                        <p class="p">On the host system, go to the directory where the toolchain
+                        installation script is located (see
+                        <a class="xref" href="tcc_gsg_build_yocto_image_toolchain.html#build-yocto-image-toolchain">Step 2: Prepare a Yocto Project*-Based Image</a>).</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Run the following command to install the toolchain. Replace
+                        <code class="ph codeph">&lt;version&gt;</code> with the version you are using. Replace
+                        <code class="ph codeph">&lt;toolchain_installation_directory&gt;</code> with the desired destination —
+                        the script will create the directory if it doesn’t already exist.
+                        Example: <code class="ph codeph">/home/&lt;user&gt;/Desktop/tools/toolchain</code>.
+                        <strong class="ph b">Don’t choose the ``tmp`` directory, as it will be emptied upon
+                        reboot.</strong></p>
+
+                        <pre class="pre codeblock"><code>
+./oecore-x86_64-corei7-64-toolchain-&lt;version&gt;.sh -d &lt;toolchain_installation_directory&gt;                        </code></pre>
+                    </li>
+
+                    <li class="li">
+                        <p class="p">To build an application, source the toolchain cross-compile
+                        environment. Replace <code class="ph codeph">&lt;toolchain_installation_directory&gt;</code> with the
+                        directory from the previous step.</p>
+
+                        <pre class="pre codeblock"><code>
+source &lt;toolchain_installation_directory&gt;/environment-setup-corei7-64-poky-linux                        </code></pre>
+                        <p class="p">After completing this step, the standard toolchain variables (for
+                        example, CC, AR, and LD) now point to the toolchain.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">As an example, build one of the provided sample applications,
+                        <code class="ph codeph">tcc_cache_allocation_sample</code>, as follows:</p>
+
+                        <ol class="ol" type="a">
+                            <li class="li">
+                                <p class="p">Go to the following directory:</p>
+
+                                <pre class="pre codeblock"><code>
+cd $SDKTARGETSYSROOT/usr/share/tcc_tools/samples/tcc_cache_allocation_sample                                </code></pre>
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Build the sample:</p>
+
+                                <pre class="pre codeblock"><code>
+make                                </code></pre>
+                            </li>
+
+                            <li class="li">
+                                <p class="p">Check that the sample was built without errors.</p>
+
+                            </li>
+
+                        </ol>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Close the terminal window, because you need to perform the next steps
+                        outside the cross-compile environment.</p>
+
+                    </li>
+
+                </ol>
+
+            </div>
+            <div class="div" id="step-3-prepare-host-machine-for-development__install-additional-host-dependencies">
+                <p class="p"><strong class="ph b">Install Additional Host Dependencies</strong></p>
+
+                <p class="p">In this step, you will install dependencies for host-side tools. The dependencies
+                are required for the data streams optimizer and cache allocation capabilities.</p>
+
+                <div class="note note"><span class="notetitle">Note:</span> 
+                    <p class="p">Make sure that the correct Python installation is used to install modules and
+                    run host-side tools. Do not source the cross-compile environment to work with host-side tools because it contains its own Python installation
+                    and may cause conflicts with Python installed on the host system.</p>
+
+                </div>
+
+                <ol class="ol">
+                    <li class="li">
+                        <p class="p">Open a new terminal window on the host system.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Install the pip tool for Python 3:</p>
+
+                        <pre class="pre codeblock"><code>
+sudo apt-get install python3-pip                        </code></pre>
+                        <p class="p">Skip this step if you have already installed pip for Python 3.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Go to the following directory:</p>
+
+                        <pre class="pre codeblock"><code>
+cd &lt;installation_directory&gt;/tools                        </code></pre>
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Install the required Python modules:</p>
+
+                        <pre class="pre codeblock"><code>
+pip3 install -r prerequisites.txt --user                        </code></pre>
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Go to <a class="xref" href="https://github.com/intel/iotg-fbu/tree/v0.7.6" target="_blank">Firmware and BIOS Utilities v0.7.6</a> and install the <code class="ph codeph">siiptool</code> directory
+                        to the <code class="ph codeph">tools/capsule</code> directory on your host system. See <code class="ph codeph">tools/capsule/README.md</code> for more details.</p>
+
+                    </li>
+
+                    <li class="li">
+                        <p class="p">Install certificates:</p>
+
+                        <p class="p">Certificates are required by the Firmware and BIOS Utilities software during
+                        capsule file generation. You can download testing certificates, for example,
+                        certificates from the
+                        <a class="xref" href="https://github.com/tianocore/edk2/tree/master/BaseTools/Source/Python/Pkcs7Sign" target="_blank">EDK2 repository</a>
+                        to the <code class="ph codeph">tools/cert</code> directory. The following certificates are needed:
+                        <code class="ph codeph">TestCert.pem</code>, <code class="ph codeph">TestRoot.pub.pem</code>, <code class="ph codeph">TestSub.pub.pem</code>. See <code class="ph codeph">tools/cert/README.md</code>
+                        for more details.</p>
+
+                    </li>
+
+                </ol>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
