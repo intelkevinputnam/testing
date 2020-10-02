@@ -5,8 +5,8 @@
         <category>
             <data name="audience" value="emtaudience:business/btssbusinesstechnologysolutionspecialist/softwaredeveloper"/>
             <data name="content type" value=""/>
-            <data name="description" value="Get started guide for TCC project"/>
-            <data name="document title" value="TCC Get Started Guide"/>
+            <data name="description" value="VTune tutorial for TCC project"/>
+            <data name="document title" value="TCC VTune Tutorial"/>
             <data name="download url" value="/content/www/us/en/develop/download/ipp-developer-guide.pdf"/>
             <data name="IDZ custom tags" value="idzcustomtags:productdocumentation"/>
             <data name="keywords" value="None"/>
@@ -18,12 +18,12 @@
             <data name="software" value="rsoftware:componentsproducts/intelfortrancompiler"/>
             <data name="primaryOwner" value="Putnam, Kevin (kevin,putnam@intel.com)"/>
             <data name="programidentifier" value="idz"/>
-            <data name="published_date" value="09/09/2020"/>
+            <data name="published_date" value="10/01/2020"/>
             <data name="resourcetypeTag" value="emtcontenttype:document"/>
             <data name="secondary contenttype" value=""/>
-            <data name="security_classification" value="Public Content or Intel Confidential"/>
-            <data name="shortDescription" value=""/>
-            <data name="shortTitle" value="TCC Get Started Guide"/>
+            <data name="security_classification" value="Public Content"/>
+            <data name="shortDescription" value="VTune tutorial for TCC project"/>
+            <data name="shortTitle" value="TCC VTune Tutorial"/>
         </category>
         <prodinfo>
             <prodname>TCC</prodname>
@@ -34,26 +34,34 @@
         <data datatype="webAttr" name="intelswd_aliasprefix" value=""/>
     </data-about>
     <topicref href="top.xml" toc="yes">
-        <topicref href="files/tcc_gsg_prerequisites.xml" toc="yes">
+        <topicref href="files/tcc_vtune_get_started.xml" toc="yes">
+            <topicref href="files/get_started/tcc_vtune_prerequisites.xml" toc="yes">
+            </topicref>
+            <topicref href="files/get_started/tcc_vtune_install_vtune.xml" toc="yes">
+            </topicref>
+            <topicref href="files/get_started/tcc_vtune_build_image_and_toolchain.xml" toc="yes">
+            </topicref>
+            <topicref href="files/get_started/tcc_vtune_install_toolchain.xml" toc="yes">
+            </topicref>
+            <topicref href="files/get_started/tcc_vtune_create_bootable_usb_drive.xml" toc="yes">
+            </topicref>
+            <topicref href="files/get_started/tcc_vtune_install_image.xml" toc="yes">
+            </topicref>
+            <topicref href="files/get_started/tcc_vtune_verify_image.xml" toc="yes">
+            </topicref>
+            <topicref href="files/get_started/tcc_vtune_verify_target_system_setup.xml" toc="yes">
+            </topicref>
         </topicref>
-        <topicref href="files/tcc_gsg_download.xml" toc="yes">
+        <topicref href="files/tcc_vtune_launch_vtune.xml" toc="yes">
         </topicref>
-        <topicref href="files/tcc_gsg_build_yocto_image_toolchain.xml" toc="yes">
+        <topicref href="files/tcc_vtune_create_project.xml" toc="yes">
         </topicref>
-        <topicref href="files/tcc_gsg_install_toolchain.xml" toc="yes">
+        <topicref href="files/tcc_vtune_find_hotspots_intro.xml" toc="yes">
+            <topicref href="files/hotspots/tcc_vtune_find_hotspots_l2_cache.xml" toc="yes">
+            </topicref>
+            <topicref href="files/hotspots/tcc_vtune_find_hotspots_l3_cache.xml" toc="yes">
+            </topicref>
         </topicref>
-        <topicref href="files/tcc_gsg_create_bootable_usb.xml" toc="yes">
-        </topicref>
-        <topicref href="files/tcc_gsg_install_image.xml" toc="yes">
-        </topicref>
-        <topicref href="files/tcc_gsg_configure_bios.xml" toc="yes">
-        </topicref>
-        <topicref href="files/tcc_gsg_verify_target_system_setup.xml" toc="yes">
-        </topicref>
-        <topicref href="files/tcc_gsg_next_steps.xml" toc="yes">
-        </topicref>
-        <topicref href="files/tcc_gsg_troubleshooting.xml" toc="yes">
-        </topicref>
-        <topicref href="files/tcc_gsg_legal.xml" toc="yes">
+        <topicref href="files/tcc_vtune_legal.xml" toc="yes">
         </topicref>
     </topicref></map>

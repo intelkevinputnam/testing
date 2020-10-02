@@ -4,21 +4,21 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="step-7-complete-and-verify-the-target-system-setup" xml:lang="en-US" outputclass="no-rel-links" ditaarch:DITAArchVersion="1.2" class="- topic/topic ">
     <title class="- topic/title ">Step 7: Complete and Verify the Target System Setup</title>
     <body>
-        <div id="verify-target-system-setup"/>
+        <div id="tcc-vtune-verify-target-system-setup"/>
         <div id="step-7-complete-and-verify-the-target-system-setup">
             <p>The remaining steps depend on the target platform that you plan to use with this release of Intel® Time Coordinated Computing Tools (Intel® TCC Tools).</p>
             <p>Go to the steps that apply to your platform:</p>
             <ul>
                 <li>
-                    <p><xref scope="local" format="https" href="#verify-target-system-setup-ehl" class="- topic/xref ">For Elkhart Lake</xref></p>
+                    <p><xref scope="local" format="dita" href="#./tcc-vtune-verify-target-system-setup-ehl" class="- topic/xref ">For Elkhart Lake</xref></p>
                 </li>
                 <li>
-                    <p><xref scope="local" format="https" href="#verify-target-system-setup-tgl" class="- topic/xref ">For Tiger Lake UP3</xref></p>
+                    <p><xref scope="local" format="dita" href="#./tcc-vtune-verify-target-system-setup-tgl" class="- topic/xref ">For Tiger Lake UP3</xref></p>
                 </li>
             </ul>
-            <div id="verify-target-system-setup-ehl"/>
+            <div id="tcc-vtune-verify-target-system-setup-ehl"/>
             <div id="for-elkhart-lake">
-                <p><b>For Elkhart Lake</b></p>
+                <p outputclass="h2"><b>For Elkhart Lake</b></p>
                 <p>Now that you have set up the target system, you will run a tool called the <i>real-time readiness checker</i> as a final verification step.</p>
                 <p>The real-time readiness checker is a command-line tool that checks the many attributes that may affect real-time performance, such as the BIOS settings configured in the previous step. It also checks for the dependencies of Intel® TCC Tools.</p>
                 <p>To complete and verify setup:</p>
@@ -37,16 +37,14 @@
                                 <p>On the host system, connect to the target via SSH. Replace <codeph>&lt;user&gt;</codeph>
                                 with the username (typically it is <codeph>root</codeph> for customer reference
                                 boards). Replace <codeph>&lt;target&gt;</codeph> with the IP address or hostname.</p>
-                                <codeblock>
-ssh &lt;user&gt;@&lt;target&gt;                                </codeblock>
+                                <codeblock>ssh &lt;user&gt;@&lt;target&gt;</codeblock>
                             </li>
                         </ol>
                     </li>
                     <li>
                         <p><b>On the target system</b>, run the following command to mount the
                         Linux Resource Control (resctrl) file system. The resctrl file system is required for the cache allocation capabilities of Intel® TCC Tools. The real-time readiness checker will check for it.</p>
-                        <codeblock>
-mount -t resctrl resctrl /sys/fs/resctrl                        </codeblock>
+                        <codeblock>mount -t resctrl resctrl /sys/fs/resctrl</codeblock>
                     </li>
                     <li>
                         <p>Maximize the terminal window to full size. The real-time readiness
@@ -54,15 +52,14 @@ mount -t resctrl resctrl /sys/fs/resctrl                        </codeblock>
                     </li>
                     <li>
                         <p>Run the real-time readiness checker:</p>
-                        <codeblock>
-tcc_rt_checker                        </codeblock>
+                        <codeblock>tcc_rt_checker</codeblock>
                     </li>
                     <li>
                         <p>In the output, check the Result column for each checker:</p>
                         <ul>
                             <li>
                                 <p>If “RT_READY” appears for all checkers, continue to
-                                <xref scope="local" format="dita" href="tcc_gsg_next_steps.xml#gsg-next-steps" class="- topic/xref ">Next Steps</xref>. See note below.</p>
+                                <xref scope="local" format="dita" href="../tcc_vtune_launch_vtune.xml#tcc-vtune-launch-vtune" class="- topic/xref ">Launch Intel® VTune™ Profiler</xref>. See note below.</p>
                             </li>
                             <li>
                                 <p>If “NOT_RT_READY” appears for any checkers, use the command <codeph>tcc_rt_checker -l</codeph> for details.</p>
@@ -73,15 +70,14 @@ tcc_rt_checker                        </codeblock>
                             </li>
                         </ul>
                         <note>
-                            <p>In some cases, the real-time readiness checker may
-                            return NOT_RT_READY summary status even if all the checks have RT_READY status.</p>
+                            <p>In some cases, the real-time readiness checker might return NOT_RT_READY summary status even if all the checks have RT_READY status.</p>
                         </note>
                     </li>
                 </ol>
-                <div id="verify-target-system-setup-tgl"/>
+                <div id="tcc-vtune-verify-target-system-setup-tgl"/>
             </div>
             <div id="for-tiger-lake-up3">
-                <p><b>For Tiger Lake UP3</b></p>
+                <p outputclass="h2"><b>For Tiger Lake UP3</b></p>
                 <p>To complete the target system setup, you will enable the cache allocation capabilities of Intel® TCC Tools. To do this, you will use a command-line tool called <i>cache configurator</i> to reserve a portion of the L2 and L3 cache. A reserved portion of cache is called <i>software SRAM</i>.</p>
                 <p>This step enables the cache allocation library to provide low-latency memory buffers to your real-time workloads. At the same time, part of the cache will be removed from general use, potentially reducing the performance of non-real-time applications.</p>
                 <p>This step reserves the recommended amount of cache (256 KB) for running the cache allocation sample,
@@ -114,8 +110,7 @@ tcc_rt_checker                        </codeblock>
                                 <p><b>On the host system</b>, connect to the target via SSH. Replace <codeph>&lt;user&gt;</codeph>
                                 with the username (typically it is <codeph>root</codeph> for customer reference
                                 boards). Replace <codeph>&lt;target&gt;</codeph> with the IP address or hostname.</p>
-                                <codeblock>
-ssh &lt;user&gt;@&lt;target&gt;                                </codeblock>
+                                <codeblock>ssh &lt;user&gt;@&lt;target&gt;</codeblock>
                             </li>
                         </ol>
                     </li>
@@ -123,18 +118,13 @@ ssh &lt;user&gt;@&lt;target&gt;                                </codeblock>
                         <p>Prepare the target system:</p>
                         <ol>
                             <li>
-                                <p>Confirm that you are working on the target system.</p>
-                            </li>
-                            <li>
                                 <p><b>On the target system</b>, add the <codeph>tcc_buffer</codeph> driver to auto load:</p>
-                                <codeblock>
-depmod -a
-                                    echo "tcc_buffer" &gt; /etc/modules-load.d/tcc_buffer.conf                                </codeblock>
+                                <codeblock>depmod -a
+                                    echo "tcc_buffer" &gt; /etc/modules-load.d/tcc_buffer.conf</codeblock>
                             </li>
                             <li>
                                 <p><b>On the target system</b>, load the <codeph>tcc_buffer</codeph> driver:</p>
-                                <codeblock>
-modprobe tcc_buffer                                </codeblock>
+                                <codeblock>modprobe tcc_buffer</codeblock>
                             </li>
                         </ol>
                     </li>
@@ -145,18 +135,19 @@ modprobe tcc_buffer                                </codeblock>
                                 <p>Go to the second terminal window to set up the cache configurator.</p>
                             </li>
                             <li>
-                                <p>Confirm that you are working on the host system.</p>
+                                <p><b>On the host system</b>, source the toolchain cross-compile
+                                environment. Replace <codeph>&lt;toolchain_installation_directory&gt;</codeph> with the
+                                directory from <xref scope="local" format="dita" href="tcc_vtune_install_toolchain.xml#tcc-vtune-install-toolchain" class="- topic/xref ">Step 3: Prepare Host Machine for Development</xref>.</p>
+                                <codeblock>source &lt;toolchain_installation_directory&gt;/environment-setup-corei7-64-poky-linux</codeblock>
                             </li>
                             <li>
-                                <p><b>On the host system</b>, go to the Intel® TCC Tools <codeph>&lt;install_directory&gt;/tcc_tools/latest/tools</codeph> directory:</p>
-                                <codeblock>
-cd &lt;install_directory&gt;/tcc_tools/latest/tools                                </codeblock>
+                                <p>Go to the Intel® TCC Tools <codeph>tools</codeph> directory:</p>
+                                <codeblock>cd &lt;toolchain installation directory&gt;/sysroots/corei7-64-ese-linux/usr/share/tcc_tools/tools</codeblock>
                             </li>
                             <li>
                                 <p>Modify the sample environment file to enable the host to SSH
                                 to the target when running the cache configurator. This example command uses nano, but you can use any text editor.</p>
-                                <codeblock>
-nano demo/environment/sample_environment.json                                </codeblock>
+                                <codeblock>nano demo/environment/sample_environment.json</codeblock>
                                 <p>Modify the following fields:</p>
                                 <table>
                                     <tgroup cols="2">
@@ -228,13 +219,11 @@ nano demo/environment/sample_environment.json                                </c
                         <ol>
                             <li>
                                 <p>Run the cache configurator:</p>
-                                <codeblock>
-./tcc_cache_configurator.py -e demo/environment/sample_environment.json                                </codeblock>
+                                <codeblock>./tcc_cache_configurator.py -e demo/environment/sample_environment.json</codeblock>
                             </li>
                             <li>
                                 <p>Confirm you see output similar to the following:</p>
-                                <codeblock>
-Checking the platform’s current real-time configuration for maximum tolerable
+                                <codeblock>Checking the platform’s current real-time configuration for maximum tolerable
                                     buffer access latency, buffer size, etc. For more information about on these
                                     parameters see the Intel® TCC Tools Developer Guide
                                     
@@ -245,7 +234,7 @@ Checking the platform’s current real-time configuration for maximum tolerable
                                     CURRENT BUFFERS ALLOCATED: 0
                                     Would you like to add (A) a cache allocation?
                                     
-                                    Or would you like to change the way the configuration is partitioned? (P)                                </codeblock>
+                                    Or would you like to change the way the configuration is partitioned? (P)</codeblock>
                             </li>
                             <li>
                                 <p>Enter <b>P</b> to select a preset.</p>
@@ -253,8 +242,7 @@ Checking the platform’s current real-time configuration for maximum tolerable
                             <li>
                                 <p>At the prompt, enter <b>4</b> to choose a preset with software
                                 SRAM in L3 cache and L2 cache for Core 3.</p>
-                                <codeblock>
-********************************************************************************
+                                <codeblock>********************************************************************************
                                     Based on your current system settings, we recommend the following preset
                                     configurations which you can use as is or use as a template to edit from:
                                     
@@ -285,13 +273,12 @@ Checking the platform’s current real-time configuration for maximum tolerable
                                     
                                     Which option would you like to select?
                                     
-                                    4                                </codeblock>
+                                    4</codeblock>
                             </li>
                             <li>
                                 <p>Confirm you see output similar to the following and press
                                 <b>Y</b> to apply this configuration:</p>
-                                <codeblock>
-NEW BUFFER 0
+                                <codeblock>NEW BUFFER 0
                                     LATENCY(ns):        74
                                     CACHE LEVEL:        2
                                     CPU CORE:           2
@@ -316,13 +303,12 @@ NEW BUFFER 0
                                     Or confirm (Y) to proceed to apply this configuration, a reboot will be required
                                     to complete the configuration.
                                     
-                                    Y                                </codeblock>
+                                    Y</codeblock>
                             </li>
                             <li>
                                 <p>Enter <b>Y</b> again to proceed to apply this configuration. To apply the
                                 configuration, the system will reboot.</p>
-                                <codeblock>
-Requested configuration:
+                                <codeblock>Requested configuration:
                                     
                                     NEW BUFFER 0
                                     LATENCY(ns):        74
@@ -346,13 +332,12 @@ Requested configuration:
                                     will be required to complete the configuration.
                                     Or continue (C) configuring your total requested configuration
                                     
-                                    Y                                </codeblock>
+                                    Y</codeblock>
                             </li>
                             <li>
                                 <p>Wait for the target system to boot and verify that the
                                 system is configured:</p>
-                                <codeblock>
-Waiting for reboot...
+                                <codeblock>Waiting for reboot...
                                     
                                     ********************************************************************************
                                     Remote Machine is successfully rebooted.
@@ -376,18 +361,14 @@ Waiting for reboot...
                                     LATENCY(ns):        159
                                     CACHE LEVEL:        3
                                     CPU CORES:          [0, 1, 2, 3]
-                                    BUFFER SIZE(bytes): 524288                                </codeblock>
+                                    BUFFER SIZE(bytes): 524288</codeblock>
                             </li>
                         </ol>
                     </li>
                     <li>
                         <p><b>Go back to the first terminal window</b> and reconnect to the target via SSH.
                         Replace <codeph>&lt;user&gt;</codeph> with the username (typically it is <codeph>root</codeph> for customer reference boards). Replace <codeph>&lt;target&gt;</codeph> with the IP address or hostname.</p>
-                        <codeblock>
-ssh &lt;user&gt;@&lt;target&gt;                        </codeblock>
-                    </li>
-                    <li>
-                        <p>Confirm that you are working on the target system.</p>
+                        <codeblock>ssh &lt;user&gt;@&lt;target&gt;</codeblock>
                     </li>
                     <li>
                         <p>Enable cache allocation capabilities on the target system. These steps
@@ -396,16 +377,13 @@ ssh &lt;user&gt;@&lt;target&gt;                        </codeblock>
                             <li>
                                 <p><b>On the target system</b>, copy the RTCM EFI binaries
                                 into <codeph>/boot/efi/EFI/BOOT/</codeph>:</p>
-                                <codeblock>
-cp /usr/share/ptcm/ptcm_*.efi /boot/efi/EFI/BOOT                                </codeblock>
+                                <codeblock>cp /usr/share/ptcm/ptcm_*.efi /boot/efi/EFI/BOOT</codeblock>
                             </li>
                             <li>
                                 <p>Determine which disk you boot from with following command:</p>
-                                <codeblock>
-lsblk                                </codeblock>
+                                <codeblock>lsblk</codeblock>
                                 <p>Example output:</p>
-                                <codeblock>
-NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+                                <codeblock>NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
                                     sda      8:0    1 57.3G  0 disk
                                     |-sda1   8:1    1  128M  0 part /boot/efi
                                     |-sda2   8:2    1   12G  0 part /
@@ -414,28 +392,25 @@ NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
                                     |-sda5   8:5    1    4G  0 part [SWAP]
                                     sdb      8:16   1 14.4G  0 disk
                                     |-sdb1   8:17   1 14.4G  0 part
-                                    sdc      8:32   1 28.7G  0 disk                                </codeblock>
+                                    sdc      8:32   1 28.7G  0 disk</codeblock>
                                 <p>In this example, the boot disk (/boot/efi) is <codeph>sda</codeph> and partition is <codeph>1</codeph>. In some cases, you may see the partition <codeph>p1</codeph>; the partition is still <codeph>1</codeph>.</p>
                             </li>
                             <li>
                                 <p>Set RTCM as the default boot option. <b>Replace &lt;disk&gt; and &lt;partition&gt; with the disk you boot from.</b></p>
-                                <codeblock>
-efibootmgr -c -l '\EFI\BOOT\ptcm_boot.efi' -d /dev/&lt;disk&gt; -p &lt;partition&gt; -L RTCM                                </codeblock>
+                                <codeblock>efibootmgr -c -l '\EFI\BOOT\ptcm_boot.efi' -d /dev/&lt;disk&gt; -p &lt;partition&gt; -L RTCM</codeblock>
                                 <p>In this example output, the appearance of RTCM means the command was successful. RTCM will be enabled (as indicated by the asterisk) and first in the boot order (as indicated in BootOrder) after you reboot.</p>
-                                <codeblock>
-BootCurrent: 0003
+                                <codeblock>BootCurrent: 0003
                                     Timeout: 5 seconds
                                     BootOrder: 0004,0003,0001,0002,0000
                                     Boot0000* Enter Setup
                                     Boot0001* Internal UEFI Shell
                                     Boot0002* Boot Device List
                                     Boot0003* UEFI INTEL SSDPEKKW010T8 BTHH85010JZH1P0E 1
-                                    Boot0004* RTCM                                </codeblock>
+                                    Boot0004* RTCM</codeblock>
                             </li>
                             <li>
                                 <p>Reboot the target system.</p>
-                                <codeblock>
-reboot                                </codeblock>
+                                <codeblock>reboot</codeblock>
                             </li>
                         </ol>
                         <p>Now the system is configured and software SRAM buffers can be allocated with
@@ -444,23 +419,21 @@ reboot                                </codeblock>
                     <li>
                         <p><b>Go back to the first terminal window</b> and reconnect to the target via SSH.
                         Replace <codeph>&lt;user&gt;</codeph> with the username (typically it is <codeph>root</codeph> for customer reference boards). Replace <codeph>&lt;target&gt;</codeph> with the IP address or hostname.</p>
-                        <codeblock>
-ssh &lt;user&gt;@&lt;target&gt;                        </codeblock>
+                        <codeblock>ssh &lt;user&gt;@&lt;target&gt;</codeblock>
                     </li>
                     <li>
                         <p>Validate system settings:</p>
                         <ol>
                             <li>
                                 <p><b>On the target system</b>, run the real-time readiness checker:</p>
-                                <codeblock>
-tcc_rt_checker                                </codeblock>
+                                <codeblock>tcc_rt_checker</codeblock>
                             </li>
                             <li>
                                 <p>In the output, check the Result column for each checker:</p>
                                 <ul>
                                     <li>
                                         <p>If “RT_READY” appears for all checkers, continue to
-                                        <xref scope="local" format="dita" href="tcc_gsg_next_steps.xml#gsg-next-steps" class="- topic/xref ">Next Steps</xref>. See note below.</p>
+                                        <xref scope="local" format="dita" href="../tcc_vtune_launch_vtune.xml#tcc-vtune-launch-vtune" class="- topic/xref ">Launch Intel® VTune™ Profiler</xref>. See note below.</p>
                                     </li>
                                     <li>
                                         <p>If “NOT_RT_READY” appears for any checkers, use the command

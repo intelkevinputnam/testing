@@ -4,20 +4,45 @@
 <topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="about-this-document" xml:lang="en-US" outputclass="no-rel-links" ditaarch:DITAArchVersion="1.2" class="- topic/topic ">
     <title class="- topic/title ">About This Document</title>
     <body>
+        <div id="tcc-vtune-index"/>
         <div id="about-this-document">
             <note>
                 <p>This Intel software is considered Pre-Release Materials and is made available under a limited Evaluation License. The Pre-Release Materials may not be fully functional, and Intel may substantially modify the Pre-Release Materials in producing any “production” version. Intel can provide no assurance that it will ever produce or make generally available a “final” or “production” version of the Pre-Release Materials. The Pre-Release Materials may not be modified or incorporated into any product; the Pre-Release Materials may not continue to be used if and once a commercial version is released; and the Pre-Released Materials, or any benchmarks, performance results, or other information relating to the Pre-Release Materials may not be disclosed to any third party.</p>
             </note>
-            <p>This guide will show you how to install and begin working with Intel®
-            Time Coordinated Computing Tools (Intel® TCC Tools).</p>
-            <div id="host-target-environment">
-                <p><b>Host-Target Environment</b></p>
-                <p>The recommended environment for using Intel® TCC Tools consists of a host system for development tasks and a target system with supported hardware platform for application deployment and execution. You can also use a supported platform for both host and target tasks, but this is beyond the scope of this guide.</p>
-                <p>You will walk through how to set up a host system and a target
-                system. The host system is a Linux* machine. The target system is a reference implementation, consisting of a supported Intel hardware platform, reference BIOS, and Yocto Project*-based OS. For more details and alternatives, see the <xref scope="external" format="https" href="https://software.intel.com/content/www/us/en/secure/develop/documentation/intel-time-coordinated-computing-tools-developer-guide-0-11/top/prerequisites-and-installation.html" class="- topic/xref ">Developer Guide</xref>.</p>
-                <p>Use the navigation menu to the left to begin, starting with
-                <xref scope="local" format="dita" href="files/tcc_gsg_prerequisites.xml#gsg-prerequisites" class="- topic/xref ">Prerequisites</xref>.</p>
-            </div>
+            <p><xref scope="external" format="https" href="https://software.intel.com/content/www/us/en/develop/tools/vtune-profiler.html" class="- topic/xref ">Intel® VTune™ Profiler</xref> is a
+            performance analysis tool that provides statistical information about
+            your application, such as CPU statistics, cache misses for different
+            types of memory, and more.</p>
+            <p>This tutorial explains how to profile real-time applications to find
+            opportunities to improve performance with the use of Intel® Time
+            Coordinated Computing Tools (Intel® TCC Tools) features such as the cache allocation library.</p>
+            <p>The tutorial covers:</p>
+            <ul>
+                <li>
+                    <p>Getting started:</p>
+                    <ul>
+                        <li>
+                            <p>Installing Intel® VTune™ Profiler</p>
+                        </li>
+                        <li>
+                            <p>Building a Yocto Project*-based image containing Intel® VTune™
+                            Profiler drivers and Intel® Time Coordinated Computing Tools (Intel®
+                            TCC Tools) layer</p>
+                        </li>
+                        <li>
+                            <p>Setting up your target system</p>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <p>Finding problems that can be addressed by Intel® TCC Tools features</p>
+                </li>
+            </ul>
+            <note>
+                <p>This tutorial applies to real-time applications running on Elkhart Lake and Tiger Lake UP3, and Intel® VTune™ Profiler 2020 U2 NDA.</p>
+            </note>
+            <p>For more information about Intel® TCC Tools, see the <xref scope="external" format="https" href="https://software.intel.com/content/www/us/en/secure/develop/time-coordinated-computing-tools.html" class="- topic/xref ">product
+            page</xref>.</p>
         </div>
     </body>
 </topic>
